@@ -1,0 +1,98 @@
+Dockerfile:
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy pre-installed dependencies
+COPY node_modules ./node_modules
+COPY package*.json ./
+
+# Copy application source
+COPY server.js ./
+COPY public ./public/
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S -u 1001 -G nodejs nodeuser
+
+RUN chown -R nodeuser:nodejs /app
+USER nodeuser
+
+EXPOSE 3000
+CMD ["node", "server.js"]
+
+.dockerignore
+# node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.eslintrc.js
+.prettierrc
+*.test.js
+test/
+
+theia@theiaopenshift-michaellau41:/home/project$ [ ! -d 'guestbook' ] && git clone https://github.com/ibm-developer-skills-network/fqdrq-guestbook-js.git guestbook
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ npm install
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ export MY_NAMESPACE=sn-labs-$USERNAME
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ echo $MY_NAMESPACE
+sn-labs-michaellau41
+
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ kubectl autoscale deployment guestbook --cpu-percent=5 --min=1 --max=10
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ ibmcloud cr images
+
+Listing images...
+
+Repository                                                               Tag                                                                           Digest         Namespace              Created         Size     Security status
+us.icr.io/sn-labs-michaellau41/guestbook                                 v1                                                                            1d79a177dcbb   sn-labs-michaellau41   2 minutes ago   50 MB    -
+us.icr.io/sn-labs-michaellau41/myapp                                     v1                                                                            47e5168f49d7   sn-labs-michaellau41   5 hours ago     350 MB   -
+
+(after edit the deployment.yml)
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ kubectl apply -f deployment.yml
+(to v2)
+
+then build and push the image to IBM container
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ kubectl rollout history deployment/guestbook
+deployment.apps/guestbook 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ kubectl get rs
+NAME                               DESIRED   CURRENT   READY   AGE
+guestbook-6d6c489fcc               0         0         0       21m
+guestbook-6dcbd48cdc               10        10        10      16m
+guestbook-75b5cffb6d               0         0         0       149m
+
+
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ kubectl rollout undo deployment/guestbook --to-revision=1
+deployment.apps/guestbook rolled back
+
+rs
+theia@theiaopenshift-michaellau41:/home/project/guestbook/v1/guestbook$ kubectl get rs
+NAME                               DESIRED   CURRENT   READY   AGE
+guestbook-6d6c489fcc               0         0         0       23m
+guestbook-6dcbd48cdc               0         0         0       18m
+guestbook-75b5cffb6d               10        10        8       151m
+
+theia@theiaopenshift-michaellau41:/home/project$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+
+
+
+
