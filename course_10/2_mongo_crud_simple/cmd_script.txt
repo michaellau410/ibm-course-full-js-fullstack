@@ -1,0 +1,1269 @@
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+employeeDB> db.employees.drop()
+true
+employeeDB> db.createCollection("employees")
+{ ok: 1 }
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+employeeDB> db.employees.drop()
+true
+employeeDB> db.createCollection("employees")
+{ ok: 1 }
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+employeeDB> db.employees.drop()
+true
+employeeDB> db.createCollection("employees")
+{ ok: 1 }
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+employeeDB> db.employees.drop()
+true
+employeeDB> db.createCollection("employees")
+{ ok: 1 }
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+employeeDB> db.employees.drop()
+true
+employeeDB> db.createCollection("employees")
+{ ok: 1 }
+theia@theiadocker-michaellau41:/home/project$ mongosh mongodb://root:gTZpIRMhAMatkcbaf4Jh2QiQ@172.21.9.91:27017
+Current Mongosh Log ID: 6a9a4a0fba33059e2c9dc29c
+Connecting to:          mongodb://<credentials>@172.21.9.91:27017/?directConnection=true&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.10.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-04T00:11:40.816+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+test> show dbs
+admin       100.00 KiB
+config       36.00 KiB
+employeeDB   72.00 KiB
+local        72.00 KiB
+test> use employeeDB
+switched to db employeeDB
+employeeDB> show collections
+employees
+employeeDB> db.employeeDB.drop()
+false
+employeeDB> show collections
+employees
+employeeDB> db.employees.drop()
+true
+employeeDB> db.createCollection("employees")
+{ ok: 1 }
+employeeDB> use employeeDB
+
+
+
+===================================================
+
+
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a3a36f99cc789a09dc29d'),
+    emp_name: 'Ray Renolds',
+    Department: 'IT',
+    salary: 7500,
+    onsite: false
+  },
+  {
+    _id: new ObjectId('6a9a3a50f99cc789a09dc29e'),
+    emp_name: 'Matt Aniston',
+    Department: 'HR',
+    salary: 6000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc29f'),
+    emp_name: 'Monica Perry',
+    Department: 'Admin',
+    salary: 5000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc2a0'),
+    emp_name: 'Rachel Tribbiani',
+    Department: 'IT',
+    salary: 9000,
+    onsite: false
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ 
+theia@theiadocker-michaellau41:/home/project$ touch app_insertOne.js
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[]
+theia@theiadocker-michaellau41:/home/project$ node app_insertOne.js
+
+
+Documents in employees collection after insertOne
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_insertMany.js
+theia@theiadocker-michaellau41:/home/project$ node app_insertMany.js
+Connected to MongoDB
+Records inserted successfully
+
+Documents in employees collection after insertMany:
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_update.js
+theia@theiadocker-michaellau41:/home/project$ node app_update.js
+Connected to MongoDB
+Updated Docs for updateOne: {
+  acknowledged: true,
+  modifiedCount: 0,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 1
+}
+One record updated
+Updated Docs for updateMany: {
+  acknowledged: true,
+  modifiedCount: 2,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 2
+}
+Many records updated
+theia@theiadocker-michaellau41:/home/project$ node app_list.js  
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'New York',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'New York',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ git clone https://github.com/michaellau410/ibm-course-8.git
+Cloning into 'ibm-course-8'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 27 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (27/27), 6.18 MiB | 39.05 MiB/s, done.
+theia@theiadocker-michaellau41:/home/project$ theia@theiadocker-michaellau41:
+theia@theiadocker-michaellau41:/home/project$ npm install mongoose@8.0.3
+
+up to date, audited 22 packages in 1m
+
+1 package is looking for funding
+  run `npm fund` for details
+
+1 critical severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+theia@theiadocker-michaellau41:/home/project$ npm audit fix
+
+removed 2 packages, changed 8 packages, and audited 20 packages in 7m
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a3a36f99cc789a09dc29d'),
+    emp_name: 'Ray Renolds',
+    Department: 'IT',
+    salary: 7500,
+    onsite: false
+  },
+  {
+    _id: new ObjectId('6a9a3a50f99cc789a09dc29e'),
+    emp_name: 'Matt Aniston',
+    Department: 'HR',
+    salary: 6000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc29f'),
+    emp_name: 'Monica Perry',
+    Department: 'Admin',
+    salary: 5000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc2a0'),
+    emp_name: 'Rachel Tribbiani',
+    Department: 'IT',
+    salary: 9000,
+    onsite: false
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ 
+theia@theiadocker-michaellau41:/home/project$ touch app_insertOne.js
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[]
+theia@theiadocker-michaellau41:/home/project$ node app_insertOne.js
+
+
+Documents in employees collection after insertOne
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_insertMany.js
+theia@theiadocker-michaellau41:/home/project$ node app_insertMany.js
+Connected to MongoDB
+Records inserted successfully
+
+Documents in employees collection after insertMany:
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_update.js
+theia@theiadocker-michaellau41:/home/project$ node app_update.js
+Connected to MongoDB
+Updated Docs for updateOne: {
+  acknowledged: true,
+  modifiedCount: 0,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 1
+}
+One record updated
+Updated Docs for updateMany: {
+  acknowledged: true,
+  modifiedCount: 2,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 2
+}
+Many records updated
+theia@theiadocker-michaellau41:/home/project$ node app_list.js  
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'New York',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'New York',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ git clone https://github.com/michaellau410/ibm-course-8.git
+Cloning into 'ibm-course-8'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 27 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (27/27), 6.18 MiB | 39.05 MiB/s, done.
+theia@theiadocker-michaellau41:/home/project$ theia@theiadocker-michaellau41:
+theia@theiadocker-michaellau41:/home/project$ npm install mongoose@8.0.3
+
+up to date, audited 22 packages in 1m
+
+1 package is looking for funding
+  run `npm fund` for details
+
+1 critical severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+theia@theiadocker-michaellau41:/home/project$ npm audit fix
+
+removed 2 packages, changed 8 packages, and audited 20 packages in 7m
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a3a36f99cc789a09dc29d'),
+    emp_name: 'Ray Renolds',
+    Department: 'IT',
+    salary: 7500,
+    onsite: false
+  },
+  {
+    _id: new ObjectId('6a9a3a50f99cc789a09dc29e'),
+    emp_name: 'Matt Aniston',
+    Department: 'HR',
+    salary: 6000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc29f'),
+    emp_name: 'Monica Perry',
+    Department: 'Admin',
+    salary: 5000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc2a0'),
+    emp_name: 'Rachel Tribbiani',
+    Department: 'IT',
+    salary: 9000,
+    onsite: false
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ 
+theia@theiadocker-michaellau41:/home/project$ touch app_insertOne.js
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[]
+theia@theiadocker-michaellau41:/home/project$ node app_insertOne.js
+
+
+Documents in employees collection after insertOne
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_insertMany.js
+theia@theiadocker-michaellau41:/home/project$ node app_insertMany.js
+Connected to MongoDB
+Records inserted successfully
+
+Documents in employees collection after insertMany:
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_update.js
+theia@theiadocker-michaellau41:/home/project$ node app_update.js
+Connected to MongoDB
+Updated Docs for updateOne: {
+  acknowledged: true,
+  modifiedCount: 0,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 1
+}
+One record updated
+Updated Docs for updateMany: {
+  acknowledged: true,
+  modifiedCount: 2,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 2
+}
+Many records updated
+theia@theiadocker-michaellau41:/home/project$ node app_list.js  
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'New York',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'New York',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ git clone https://github.com/michaellau410/ibm-course-8.git
+Cloning into 'ibm-course-8'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 27 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (27/27), 6.18 MiB | 39.05 MiB/s, done.
+theia@theiadocker-michaellau41:/home/project$ touch app_delete.js
+theia@theiadocker-michaellau41:/home/project$ node app_delete.js
+Connected to MongoDB
+Deleted document for deleteOne: { acknowledged: true, deletedCount: 0 }
+Deleted documents for deleteMany: { acknowledged: true, deletedCount: 2 }
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'New York',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ theia@theiadocker-michaellau41:
+theia@theiadocker-michaellau41:/home/project$ npm install mongoose@8.0.3
+
+up to date, audited 22 packages in 1m
+
+1 package is looking for funding
+  run `npm fund` for details
+
+1 critical severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+theia@theiadocker-michaellau41:/home/project$ npm audit fix
+
+removed 2 packages, changed 8 packages, and audited 20 packages in 7m
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a3a36f99cc789a09dc29d'),
+    emp_name: 'Ray Renolds',
+    Department: 'IT',
+    salary: 7500,
+    onsite: false
+  },
+  {
+    _id: new ObjectId('6a9a3a50f99cc789a09dc29e'),
+    emp_name: 'Matt Aniston',
+    Department: 'HR',
+    salary: 6000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc29f'),
+    emp_name: 'Monica Perry',
+    Department: 'Admin',
+    salary: 5000,
+    onsite: true
+  },
+  {
+    _id: new ObjectId('6a9a3a78f99cc789a09dc2a0'),
+    emp_name: 'Rachel Tribbiani',
+    Department: 'IT',
+    salary: 9000,
+    onsite: false
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ 
+theia@theiadocker-michaellau41:/home/project$ touch app_insertOne.js
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[]
+theia@theiadocker-michaellau41:/home/project$ node app_insertOne.js
+
+
+Documents in employees collection after insertOne
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_insertMany.js
+theia@theiadocker-michaellau41:/home/project$ node app_insertMany.js
+Connected to MongoDB
+Records inserted successfully
+
+Documents in employees collection after insertMany:
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'Illinois',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'Austin',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ touch app_update.js
+theia@theiadocker-michaellau41:/home/project$ node app_update.js
+Connected to MongoDB
+Updated Docs for updateOne: {
+  acknowledged: true,
+  modifiedCount: 0,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 1
+}
+One record updated
+Updated Docs for updateMany: {
+  acknowledged: true,
+  modifiedCount: 2,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 2
+}
+Many records updated
+theia@theiadocker-michaellau41:/home/project$ node app_list.js  
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'New York',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a7'),
+    emp_name: 'Ray Renolds',
+    age: 32,
+    location: 'New York',
+    email: 'rayr@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2aa'),
+    emp_name: 'Rachel Tribbiani',
+    age: 28,
+    location: 'Boston',
+    email: 'rachelt@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ git clone https://github.com/michaellau410/ibm-course-8.git
+Cloning into 'ibm-course-8'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 27 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (27/27), 6.18 MiB | 39.05 MiB/s, done.
+theia@theiadocker-michaellau41:/home/project$ touch app_delete.js
+theia@theiadocker-michaellau41:/home/project$ node app_delete.js
+Connected to MongoDB
+Deleted document for deleteOne: { acknowledged: true, deletedCount: 0 }
+Deleted documents for deleteMany: { acknowledged: true, deletedCount: 2 }
+theia@theiadocker-michaellau41:/home/project$ node app_list.js
+[
+  {
+    _id: new ObjectId('6a9a4eb7e201e91afcab34e3'),
+    emp_name: 'John Doe',
+    age: 37,
+    location: 'New York',
+    email: 'jdoe@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a8'),
+    emp_name: 'Matt Aniston',
+    age: 25,
+    location: 'Houston',
+    email: 'matta@somewhere.com',
+    __v: 0
+  },
+  {
+    _id: new ObjectId('6a9a4f02283f847288c1e2a9'),
+    emp_name: 'Monica Perry',
+    age: 23,
+    location: 'New Jersey',
+    email: 'monicap@somewhere.com',
+    __v: 0
+  }
+]
+theia@theiadocker-michaellau41:/home/project$ 
