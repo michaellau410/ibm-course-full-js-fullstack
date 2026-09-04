@@ -1,0 +1,364 @@
+ibm-course-10 final
+
+backend:
+(the image source is directly get from GitHub)
+
+ibmcloud ce project current
+To avoid disruption updating the CLI or plug-ins through the 'update' and 'plugin' commands, you must update to version 2.36.0 by Oct 30 2025. To update, use 'ibmcloud update'
+theia@theia-michaellau41:/home/project$ ibmcloud ce project current
+Getting the current project context...
+OK
+
+Name:       Code Engine - sn-labs-michaellau41  
+ID:         7e9ae19f-aa49-4ff5-adf0-71953e16def3  
+Subdomain:  2e9gohpgpyog  
+Domain:     us-south.codeengine.appdomain.cloud  
+Region:     us-south  
+
+Kubernetes Config:    
+Context:               2e9gohpgpyog  
+Environment Variable:  export KUBECONFIG="/home/theia/.bluemix/plugins/code-engine/Code Engine - sn-labs-michaellau41-7e9ae19f-aa49-4ff5-adf0-71953e16def3.yaml"  
+theia@theia-michaellau41:/home/project$ ibmcloud ce application create --name prodlist --image us.icr.io/${SN_ICR_NAMESPACE}/prodlist --registry-secret icr-secret --port 5000 --build-context-dir products_list --build-source https://github.com/ibm-developer-skills-network/wzpvw-dealer_evaluation_backend_js.git
+Creating application 'prodlist'...
+Waiting for new application revision...
+Submitting build run 'prodlist-run-260902-105114352'...
+For troubleshooting information visit: https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-build.
+Run 'ibmcloud ce buildrun get -n prodlist-run-260902-105114352' to check the build run status.
+Run 'ibmcloud ce buildrun logs -f -n prodlist-run-260902-105114352' to follow the logs of the build run.
+Creating image 'us.icr.io/sn-labs-michaellau41/prodlist:260902-1451-itl4v'...
+Waiting for build run to complete...
+Build run status: 'pending'
+Build run status: 'running'
+Build run completed successfully.
+Run 'ibmcloud ce buildrun get -n prodlist-run-260902-105114352' to check the build run status.
+Waiting for application 'prodlist' to become ready.
+Configuration 'prodlist' is waiting for a Revision to become ready.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n prodlist' to check the application status.
+OK                                                
+
+https://prodlist.2e9gohpgpyog.us-south.codeengine.appdomain.cloud
+theia@theia-michaellau41:/home/project$ ibmcloud ce app get
+NAME:
+  get - Display the details of an application.
+
+USAGE:
+  get --name APPLICATION_NAME [options...]
+
+OPTIONS:
+  --name                Required. The name of the application.  
+                        Aliases: -n value  
+                          
+  --output              Output format. Valid values are 'json', 'yaml', 'jsonpath=JSONPATH_EXPRESSION',  
+                        'jsonpath-as-json=JSONPATH_EXPRESSION', 'url', and 'project-url'.  
+                        Aliases: -o value  
+                          
+  --quiet               Specify this option to reduce the output of the command. (default: false)  
+                        Aliases: -q  
+                          
+  --show-all-revisions  Show all revisions for this application. If not specified, only revisions which are  
+                        configured to receive traffic are shown. (default: false)  
+                        Aliases: -r  
+                          
+  --help                Show help. (default: false)  
+                        Aliases: -h  
+                          
+FAILED
+Required option 'name' is not set.
+
+theia@theia-michaellau41:/home/project$ ibmcloud ce app --list
+Incorrect Usage. flag provided but not defined: -list
+
+NAME:
+  ibmcloud code-engine application - Manage applications.
+
+USAGE:
+  ibmcloud code-engine application command [arguments...] [command options]
+
+COMMANDS:
+  bind      Bind an IBM Cloud service instance to an application.
+  create    Create an application.
+  delete    Delete an application.
+  events    Display the system events of application instances. System events are retained up to 60 minutes.
+  get       Display the details of an application.
+  list      List all applications in a project.
+  logs      Display the logs of application instances.
+  restart   Restart running application instances.
+  unbind    Unbind IBM Cloud service instances from an application.
+  update    Update an application.
+  help, h   Show help
+
+Enter 'ibmcloud code-engine application help [command]' for more information about a command.
+
+theia@theia-michaellau41:/home/project$ ibmcloud ce app       
+NAME:
+  ibmcloud code-engine application - Manage applications.
+
+USAGE:
+  ibmcloud code-engine application command [arguments...] [command options]
+
+COMMANDS:
+  bind      Bind an IBM Cloud service instance to an application.
+  create    Create an application.
+  delete    Delete an application.
+  events    Display the system events of application instances. System events are retained up to 60 minutes.
+  get       Display the details of an application.
+  list      List all applications in a project.
+  logs      Display the logs of application instances.
+  restart   Restart running application instances.
+  unbind    Unbind IBM Cloud service instances from an application.
+  update    Update an application.
+  help, h   Show help
+
+Enter 'ibmcloud code-engine application help [command]' for more information about a command.
+
+theia@theia-michaellau41:/home/project$ ibmcloud ce app list
+Listing all applications...
+OK
+
+Name      Status  URL                                                                Latest          Age  Conditions  Reason  
+prodlist  Ready   https://prodlist.2e9gohpgpyog.us-south.codeengine.appdomain.cloud  prodlist-00001  10m  3 OK / 3      
+theia@theia-michaellau41:/home/project$ ibmcloud ce application create --name dealerdetails --image us.icr.io/${SN_ICR_NAMESPACE}/dealerdetails --registry-secret icr-secret --port 8080 --build-context-dir dealer_details --build-source https://github.com/ibm-developer-skills-network/wzpvw-dealer_evaluation_backend_js.git
+Creating application 'dealerdetails'...
+Waiting for new application revision...
+Submitting build run 'dealerdetails-run-260902-110610144'...
+For troubleshooting information visit: https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-build.
+Run 'ibmcloud ce buildrun get -n dealerdetails-run-260902-110610144' to check the build run status.
+Run 'ibmcloud ce buildrun logs -f -n dealerdetails-run-260902-110610144' to follow the logs of the build run.
+Creating image 'us.icr.io/sn-labs-michaellau41/dealerdetails:260902-1506-j4a5k'...
+Waiting for build run to complete...
+Build run status: 'pending'
+Build run status: 'running'
+Build run completed successfully.
+Run 'ibmcloud ce buildrun get -n dealerdetails-run-260902-110610144' to check the build run status.
+Waiting for application 'dealerdetails' to become ready.
+Configuration 'dealerdetails' is waiting for a Revision to become ready.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n dealerdetails' to check the application status.
+OK                                                
+
+https://dealerdetails.2e9gohpgpyog.us-south.codeengine.appdomain.cloud
+theia@theia-michaellau41:/home/project$ ls
+theia@theia-michaellau41:/home/project$ cd ..
+theia@theia-michaellau41:/home$ ls
+project  theia
+theia@theia-michaellau41:/home$ cd ..
+theia@theia-michaellau41:/$ ls
+README.md  chromedriver-linux64  flutter_linux_3.24.1-stable.tar.xz  lib32   media  proc  sbin  tmp
+bin        dev                   home                                lib64   mnt    root  srv   usr
+boot       etc                   lib                                 libx32  opt    run   sys   var
+theia@theia-michaellau41:/$ cd home
+theia@theia-michaellau41:/home$ cd pro*
+theia@theia-michaellau41:/home/project$ ls
+theia@theia-michaellau41:/home/project$ ibmcloud ce application list
+Listing all applications...
+OK
+
+Name           Status  URL                                                                     Latest               Age  Conditions  Reason  
+dealerdetails  Ready   https://dealerdetails.2e9gohpgpyog.us-south.codeengine.appdomain.cloud  dealerdetails-00001  17m  3 OK / 3      
+prodlist       Ready   https://prodlist.2e9gohpgpyog.us-south.codeengine.appdomain.cloud       prodlist-00001       32m  3 OK / 3      
+theia@theia-michaellau41:/home/project$ 
+
+
+frontend:
+theia@theia-michaellau41:/home/project$ git clone https://github.com/ibm-developer-skills-network/pcsjq-dealer_evaluation_frontend_js.git 
+Cloning into 'pcsjq-dealer_evaluation_frontend_js'...
+remote: Enumerating objects: 17, done.
+remote: Counting objects: 100% (17/17), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 17 (delta 3), reused 4 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (17/17), 10.05 KiB | 10.05 MiB/s, done.
+Resolving deltas: 100% (3/3), done.
+theia@theia-michaellau41:/home/project$ ls
+pcsjq-dealer_evaluation_frontend_js
+theia@theia-michaellau41:/home/project$ cd pc*
+theia@theia-michaellau41:/home/project/pcsjq-dealer_evaluation_frontend_js$ ls
+Dockerfile  LICENSE  README.md  app.js  html  package.json  products.json
+theia@theia-michaellau41:/home/project/pcsjq-dealer_evaluation_frontend_js$ ls
+Dockerfile  LICENSE  README.md  app.js  html  package.json  products.json
+theia@theia-michaellau41:/home/project/pcsjq-dealer_evaluation_frontend_js$ ibmcloud ce application create --name frontend --image us.icr.io/${SN_ICR_NAMESPACE}/frontend --registry-secret icr-secret --port 5001 --build-source .
+Creating application 'frontend'...
+Waiting for new application revision...
+Packaging files to upload from source path '.'...
+Submitting build run 'frontend-run-260902-114417689'...
+For troubleshooting information visit: https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-build.
+Run 'ibmcloud ce buildrun get -n frontend-run-260902-114417689' to check the build run status.
+Run 'ibmcloud ce buildrun logs -f -n frontend-run-260902-114417689' to follow the logs of the build run.
+Creating image 'us.icr.io/sn-labs-michaellau41/frontend:260902-1544-bbkl9'...
+Waiting for build run to complete...
+Build run status: 'pending'
+Build run status: 'running'
+Build run completed successfully.
+Run 'ibmcloud ce buildrun get -n frontend-run-260902-114417689' to check the build run status.
+Waiting for application 'frontend' to become ready.
+Configuration 'frontend' is waiting for a Revision to become ready.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n frontend' to check the application status.
+OK                                                
+
+https://frontend.2e9gohpgpyog.us-south.codeengine.appdomain.cloud
+theia@theia-michaellau41:/home/project/pcsjq-dealer_evaluation_frontend_js$ ibmcloud ce application update --name frontend --image us.icr.io/${SN_ICR_NAMESPACE}/frontend --registry-secret icr-secret --port 5001 --build-source .
+Updating application 'frontend' to latest revision.
+Waiting for new application revision...
+Packaging files to upload from source path '.'...
+Submitting build run 'frontend-run-260902-115221486'...
+For troubleshooting information visit: https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-build.
+Run 'ibmcloud ce buildrun get -n frontend-run-260902-115221486' to check the build run status.
+Run 'ibmcloud ce buildrun logs -f -n frontend-run-260902-115221486' to follow the logs of the build run.
+Creating image 'us.icr.io/sn-labs-michaellau41/frontend:260902-1552-tthxg'...
+Waiting for build run to complete...
+Build run status: 'pending'
+Build run status: 'running'
+Build run completed successfully.
+Run 'ibmcloud ce buildrun get -n frontend-run-260902-115221486' to check the build run status.
+Waiting for application 'frontend' to become ready.
+Traffic is not yet migrated to the latest revision.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n frontend' to check the application status.
+OK                                                
+
+https://frontend.2e9gohpgpyog.us-south.codeengine.appdomain.cloud
+theia@theia-michaellau41:/home/project/pcsjq-dealer_evaluation_frontend_js$ 
+
+
+index.html for frontend
+<html>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    td:nth-child(even), th:nth-child(even) {
+      background-color: #D6EEEE;
+    }
+  </style>
+  <script>
+    let produrl = "https://prodlist.2e9gohpgpyog.us-south.codeengine.appdomain.cloud/"
+    let dealerurl = "https://dealerdetails.2e9gohpgpyog.us-south.codeengine.appdomain.cloud/"
+
+    axios.get(produrl + "products")
+      .then(res => {
+        if (Array.isArray(res.data)) {
+          let selEl = document.createElement("select");
+          selEl.setAttribute("id", "selProd");
+          selEl.setAttribute("onChange", "getDealers()");
+          let defaultOpt = document.createElement("option");
+          defaultOpt.setAttribute('value', "--SELECT--");
+          defaultOpt.innerText = "--SELECT--";
+          selEl.appendChild(defaultOpt);
+
+          res.data.forEach(item => {
+            let optEl = document.createElement("option");
+            optEl.setAttribute('value', item.product);
+            optEl.innerText = item.product;
+            selEl.appendChild(optEl);
+          });
+          
+          let prod = document.getElementById('prod_dd');
+          while (prod.firstChild) {
+            prod.removeChild(prod.firstChild);
+          }
+          prod.appendChild(selEl);
+        } else {
+          console.error("Unexpected response structure:", res.data);
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching products:", error);
+      });
+
+    let getDealers = () => {
+      let valToFetch = document.getElementById("selProd").value;
+
+      if (valToFetch != "--SELECT--") {
+        axios.get(produrl + "products/" + valToFetch)
+          .then(res => {
+            if (res.data && Array.isArray(res.data.Dealers)) {
+              let selEl = document.createElement("select");
+              selEl.setAttribute("id", "selDealer");
+              selEl.setAttribute("onChange", "getDealerProductPrice()");
+              let defaultOpt = document.createElement("option");
+              defaultOpt.setAttribute('value', "--SELECT--");
+              defaultOpt.innerText = "--SELECT--";
+              selEl.appendChild(defaultOpt);
+              res.data.Dealers.forEach(element => {
+                let optEl = document.createElement("option");
+                optEl.setAttribute('value', element);
+                optEl.innerText = element;
+                selEl.appendChild(optEl);
+              });
+              let optEl = document.createElement("option");
+              optEl.setAttribute('value', 'All Dealers');
+              optEl.innerText = 'All Dealers';
+              selEl.appendChild(optEl);
+
+              let dealers = document.getElementById('dealers');
+              while (dealers.firstChild) {
+                dealers.removeChild(dealers.firstChild);
+              }
+              dealers.appendChild(selEl);
+            } else {
+              console.error("Unexpected response structure:", res.data);
+            }
+          })
+          .catch(error => {
+            console.error("Error fetching dealers:", error);
+          });
+      }
+    }
+
+    let getDealerProductPrice = () => {
+      let prodvalToFetch = document.getElementById("selProd").value;
+      let dealervalToFetch = document.getElementById("selDealer").value;
+
+      let pricingEl = document.getElementById("pricing");
+      while (pricingEl.firstChild) {
+        pricingEl.removeChild(pricingEl.firstChild);
+      }
+
+      if (dealervalToFetch != 'All Dealers') {
+        axios.get(dealerurl + "price/" + dealervalToFetch + "/" + prodvalToFetch)
+          .then(res => {
+            if (res.data && res.data.message) {
+              document.getElementById("pricing").innerText = res.data.message;
+            } else {
+              console.error("Unexpected response structure:", res.data);
+            }
+          })
+          .catch(error => {
+            console.error("Error fetching dealer price:", error);
+          });
+      } else {
+        axios.get(dealerurl + "allprice/" + prodvalToFetch)
+          .then(res => {
+            if (res.data && res.data.prices) {
+              let table = document.createElement("table");
+
+              res.data.prices.forEach(price => {
+                let tr = document.createElement("tr");
+                tr.innerHTML = "<td>" + price.key + "</td><td>" + price.value + "</td>";
+                table.appendChild(tr);
+              });
+
+              if (table.hasChildNodes()) {
+                pricingEl.appendChild(table);
+              }
+            } else {
+              console.error("Unexpected response structure:", res.data);
+            }
+          })
+          .catch(error => {
+            console.error("Error fetching all dealer prices:", error);
+          });
+      }
+    }
+  </script>
+  <h1>
+    Products price comparison
+    <div style='margin:6mm' id='prod_dd'></div>
+    <div style='margin:6mm' id='dealers'></div>
+    <div style='margin:6mm;font-size: large;' id='pricing'></div>
+  </h1>
+</html>
+
