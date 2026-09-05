@@ -1,0 +1,5 @@
+npm init
+npm install mongoose@8.0.3
+npm install express (host service)
+npm install body-parser (process input)
+npm install cors (test endpoint from POSTMAN)
