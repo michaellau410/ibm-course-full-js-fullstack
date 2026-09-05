@@ -1,0 +1,174 @@
+Q1
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax_calculator$ npx jasmine
+Randomized with seed 47213
+Started
+.......
+
+
+7 specs, 0 failures
+Finished in 0.007 seconds
+Randomized with seed 47213 (jasmine --random=true --seed=47213)
+
+Q2
+FROM nginx
+COPY favicon.ico /usr/share/nginx/html/favicon.ico
+COPY index.html /usr/share/nginx/html/index.html
+COPY script.js /usr/share/nginx/html/script.js
+COPY style.css /usr/share/nginx/html/style.css
+COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js
+
+Q3
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax_calculator$ docker build -t tax-calculator .
+[+] Building 14.5s (11/11) FINISHED                              docker:default
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 305B                                       0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest            2.3s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/6] FROM docker.io/library/nginx:latest@sha256:0e768ba3686f7db3ab56  9.1s
+ => => resolve docker.io/library/nginx:latest@sha256:0e768ba3686f7db3ab56  0.0s
+ => => sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfb 29.78MB / 29.78MB  5.6s
+ => => sha256:0e768ba3686f7db3ab5687f1a65e641ef1e6d5b49e1 2.29kB / 2.29kB  0.0s
+ => => sha256:39694cde734ef95d7d1da72615bb7b8361a035a0a 33.32MB / 33.32MB  6.3s
+ => => sha256:3b9f3509a82680768cbbee872aecb680eb087285247d2fa 628B / 628B  0.4s
+ => => sha256:8870c81b28342ca2f04849ba4b1b00f5b17d5bbd0c2 9.09kB / 9.09kB  0.0s
+ => => sha256:0b19be7179947001f6a48f13c58423b1427852de2546ba5 956B / 956B  0.8s
+ => => sha256:8d2092eabbc5d47a8618fa66c9d8401abe0b82975095a58 403B / 403B  1.1s
+ => => sha256:6a24a6ebcf30e20b7399e8e49d114d16c641afecb94 1.21kB / 1.21kB  1.5s
+ => => sha256:45ef33eb91c8a1fddffe57a10a8f3444dcc55515bc0 1.40kB / 1.40kB  1.8s
+ => => extracting sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfbd65769f  1.8s
+ => => extracting sha256:39694cde734ef95d7d1da72615bb7b8361a035a0a2f92458  1.1s
+ => => extracting sha256:3b9f3509a82680768cbbee872aecb680eb087285247d2fab  0.0s
+ => => extracting sha256:0b19be7179947001f6a48f13c58423b1427852de2546ba50  0.0s
+ => => extracting sha256:8d2092eabbc5d47a8618fa66c9d8401abe0b82975095a583  0.0s
+ => => extracting sha256:6a24a6ebcf30e20b7399e8e49d114d16c641afecb94302c9  0.0s
+ => => extracting sha256:45ef33eb91c8a1fddffe57a10a8f3444dcc55515bc0c01b1  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 23.84kB                                       0.0s
+ => [2/6] COPY favicon.ico /usr/share/nginx/html/favicon.ico               2.7s
+ => [3/6] COPY index.html /usr/share/nginx/html/index.html                 0.0s
+ => [4/6] COPY script.js /usr/share/nginx/html/script.js                   0.0s
+ => [5/6] COPY style.css /usr/share/nginx/html/style.css                   0.0s
+ => [6/6] COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js     0.1s
+ => exporting to image                                                     0.1s
+ => => exporting layers                                                    0.1s
+ => => writing image sha256:ceb501780ec66aa8571926e5e75b2f2f84118b2e87910  0.0s
+ => => naming to docker.io/library/tax-calculator                          0.0s
+
+
+Q4
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax_calculator$ docker run -it -d -p 8080:80 tax-calculator
+b3390fc39548a198ffc21381cfd168957b9d8f8f9dc13e9603dc262a83a9141e
+
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax_calculator$ docker ps -aq | xargs docker stop | xargs docker rm
+b3390fc39548
+
+
+Q5
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax_calculator$ docker push us.icr.io/${SN_ICR_NAMESPACE}/zntwk-tax_calculator
+Using default tag: latest
+The push refers to repository [us.icr.io/sn-labs-michaellau41/zntwk-tax_calculator]
+0357df138b79: Pushed 
+45f79ffc0636: Pushed 
+521238ff5bc7: Pushed 
+b4d4ae8f5f07: Pushed 
+7b852a7f5f30: Pushed 
+baeb18ce629e: Pushed 
+d25d8a6317e7: Pushed 
+b103a0231ea1: Pushed 
+7f047c6929df: Pushed 
+1ec0927e56d8: Pushed 
+06b2003a5e20: Pushed 
+f2ec4de84f55: Pushed 
+latest: digest: sha256:77aa0e2a7eeb13467ed99421caba03d46bfacc9462a4c085e9b8261180846639 size: 2816
+
+
+Q6
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax-calculator$ ibmcloud ce application create --name zntwk-tax-calculator --image us.icr.io/${SN_ICR_NAMESPACE}/zntwk-tax-calculator --registry-secret icr-secret --port 80
+Creating application 'zntwk-tax-calculator'...
+The Route is still working to reflect the latest desired specification.
+Configuration 'zntwk-tax-calculator' is waiting for a Revision to become ready.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n zntwk-tax-calculator' to check the application status.
+OK
+
+https://zntwk-tax-calculator.2dna3v2jn1qj.us-south.codeengine.appdomain.cloud
+theia@theiaopenshift-michaellau41:/home/project/zntwk-tax-calculator$ ibmcloud ce application get --name zntwk-tax-calculator
+OK
+
+Name:               zntwk-tax-calculator  
+ID:                 73f1b011-86c0-420f-94a9-e9e67c290f74  
+Project Name:       Code Engine - sn-labs-michaellau41  
+Project ID:         a9e02a02-f746-4a65-b8aa-3fe0644878b2  
+Age:                73s  
+Created:            2026-08-18T02:02:17-04:00  
+URL:                https://zntwk-tax-calculator.2dna3v2jn1qj.us-south.codeengine.appdomain.cloud  
+Cluster Local URL:  http://zntwk-tax-calculator.2dna3v2jn1qj.svc.cluster.local  
+Console URL:        https://cloud.ibm.com/codeengine/project/us-south/a9e02a02-f746-4a65-b8aa-3fe0644878b2/application/zntwk-tax-calculator/configuration  
+Status Summary:     Application deployed successfully  
+
+Environment Variables:    
+  Type     Name             Value  
+  Literal  CE_API_BASE_URL  https://api.private.us-south.codeengine.cloud.ibm.com  
+  Literal  CE_APP           zntwk-tax-calculator  
+  Literal  CE_DOMAIN        us-south.codeengine.appdomain.cloud  
+  Literal  CE_PROJECT_ID    a9e02a02-f746-4a65-b8aa-3fe0644878b2  
+  Literal  CE_REGION        us-south  
+  Literal  CE_SUBDOMAIN     2dna3v2jn1qj  
+Image:                  us.icr.io/sn-labs-michaellau41/ibm-course-7-final  
+Resource Allocation:      
+  CPU:                1  
+  Ephemeral Storage:  400M  
+  Memory:             4G  
+Registry Secrets:         
+  icr-secret  
+Port:                   80  
+
+Revisions:          
+  zntwk-tax-calculator-00001:    
+    Age:                73s  
+    Latest:             true  
+    Traffic:            100%  
+    Image:              us.icr.io/sn-labs-michaellau41/ibm-course-7-final (pinned to 77aa0e)  
+    Running Instances:  1  
+
+Runtime:            
+  Concurrency:       100  
+  Maximum Scale:     10  
+  Minimum Scale:     0  
+  Scale Down Delay:  0  
+  Timeout:           300  
+  Trusted profiles:  disabled  
+
+Readiness Probe:    
+  Type:  tcp  
+  Port:  0 (use listening port)  
+
+Conditions:         
+  Type                 OK    Age  Reason  
+  ConfigurationsReady  true  60s    
+  Ready                true  48s    
+  RoutesReady          true  48s    
+
+Events:             
+  Type    Reason   Age  Source              Messages  
+  Normal  Created  74s  service-controller  Created Configuration "zntwk-tax-calculator"  
+  Normal  Created  74s  service-controller  Created Route "zntwk-tax-calculator"  
+
+Instances:          
+  Name                                                    Revision                    Running  Status       Restarts  Age  
+  zntwk-tax-calculator-00001-deployment-598df59497-k2cxv  zntwk-tax-calculator-00001  3/3      Terminating  0         72s  
+
+
+Q7
+https://raw.githubusercontent.com/michaellau410/juphc-tc_pipeline/refs/heads/main/tasks.yaml
+
+Q8
+https://raw.githubusercontent.com/michaellau410/juphc-tc_pipeline/refs/heads/main/pipeline.yaml
+
+Q9
+https://raw.githubusercontent.com/michaellau410/juphc-tc_pipeline/refs/heads/main/run.yaml
+
+Q10
+
