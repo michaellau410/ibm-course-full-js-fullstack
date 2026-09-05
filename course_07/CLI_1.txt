@@ -1,0 +1,524 @@
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline \
+>     --showlog \
+>     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git" \
+>     -p branch="main"
+PipelineRun started: cd-pipeline-run-58kds
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ theia@theiaopenshift-michaellau41:/home/pro
+theia@theiaopenshift-michaellau41:/home/project$ git clone https://gitdeveloper-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git
+Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+remote: Enumerating objects: 96, done.
+remote: Counting objects: 100% (25/25), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 96 (delta 16), reused 9 (delta 9), pack-reused 71 (from 1)
+Receiving objects: 100% (96/96), 91.85 KiB | 13.12 MiB/s, done.
+Resolving deltas: 100% (35/35), done.
+theia@theiaopenshift-michaellau41:/home/project$ 
+theia@theiaopenshift-michaellau41:/home/project$ cd ttwst-jhxyb-ci-cd-labs/01_base_pipeline/
+theia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipeline_js/labs
+/01_base_pipeline$ 
+theia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipetheia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipetheia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipeline_js/labs
+/01_base_pipeline$ export PS1="[\[\033[01;32m\]\u\[\033[00
+m\]: \[\033[01;34m\]\W\[\033[00m\]]\$ "
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+The Task "<place-name-here>" is invalid: metadata.name: Invalid value: "<place-name-here>": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+The Task "<place-name-here>" is invalid: metadata.name: Invalid value: "<place-name-here>": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": Pipeline in version "v1beta1" cannot be handled as a Pipeline: strict decoding error: unknown field "metadata.args", unknown field "metadata.command", unknown field "metadata.image"
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": Task in version "v1beta1" cannot be handled as a Task: strict decoding error: unknown field "metadata.args", unknown field "metadata.command", unknown field "metadata.image"
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal object into Go struct field TaskSpec.spec.steps of type []v1beta1.Step
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal object into Go struct field TaskSpec.spec.steps of type []v1beta1.Step
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal object into Go struct field TaskSpec.spec.steps of type []v1beta1.Step
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/hello-world created
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start --showlog hello-pipeline
+ 
+PipelineRun started: hello-pipeline-run-fc6tn
+Waiting for logs to be available...
+[hello : echo] Hello World
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal string into Go struct field Step.spec.steps.args of type []string
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"hello-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"message\"}],\"tasks\":[{\"name\":\"hello\",\"taskRef\":{\"name\":\"echo\",\"params\":[{\"name\":\"message\",\"value\":\"${params.message}\"}]}}]}}\n"}},"spec":{"params":[{"name":"message"}],"tasks":[{"name":"hello","taskRef":{"name":"echo","params":[{"name":"message","value":"${params.message}"}]}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "hello-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: expected exactly one, got both: spec.tasks[0].taskRef.name, spec.tasks[0].taskRef.params
+missing field(s): spec.tasks[0].taskRef.resolver
+resolver params requires "enable-api-fields" feature gate to be "alpha" or "beta" but it is "stable": 
+taskref.params requires "enable-api-fields" feature gate to be "alpha" or "beta" but it is "stable": 
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-tfrfj
+Waiting for logs to be available...
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-7cn6s
+Waiting for logs to be available...
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-r8gn4
+Waiting for logs to be available...
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":\"${params.message}\",\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":"${params.message}","command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal string into Go struct field Step.spec.steps.args of type []string
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-sdbnm
+Waiting for logs to be available...
+[hello : echo-message] ${params.message}
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"hello-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"message\"}],\"tasks\":[{\"name\":\"hello\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"message"}],"tasks":[{"name":"hello","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "hello-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.echo-message)": spec.tasks[0].params[echo-message]
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"hello-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"message\"}],\"tasks\":[{\"name\":\"hello\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"message"}],"tasks":[{"name":"hello","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "hello-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.echo-message)": spec.tasks[0].params[echo-message]
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline     --showlog      -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-wth89
+Waiting for logs to be available...
+[hello : echo-message] Hello Tekton!
+
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.echo-message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-messageX\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.echo-message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-messageX"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: invalid value "echo-messageX": spec.steps[0].name
+Task step name must be a valid DNS Label, For more info refer to https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+task.tekton.dev/checkout created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline \
+>     --showlog \
+>     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git" \
+>     -p branch="main"
+PipelineRun started: cd-pipeline-run-ss5w9
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"cd-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"repo-url\"},{\"default\":\"master\",\"name\":\"branch\"}],\"tasks\":[{\"name\":\"clone\",\"params\":[{\"name\":\"repo-url\",\"value\":\"$(params.repo-url)\"},{\"name\":\"branch\",\"value\":\"$(params.branch)\"}],\"taskRef\":{\"name\":\"checkout\"}},{\"name\":\"lint\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"clone\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"tests\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"lint\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"build\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"tests\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"deploy\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"build\"],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"repo-url"},{"default":"master","name":"branch"}],"tasks":[{"name":"clone","params":[{"name":"repo-url","value":"$(params.repo-url)"},{"name":"branch","value":"$(params.branch)"}],"taskRef":{"name":"checkout"}},{"name":"lint","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["clone"],"taskRef":{"name":"echo"}},{"name":"tests","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["lint"],"taskRef":{"name":"echo"}},{"name":"build","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["tests"],"taskRef":{"name":"echo"}},{"name":"deploy","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["build"],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "cd-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.tasks[1].params[message], spec.tasks[2].params[message], spec.tasks[3].params[message], spec.tasks[4].params[message]
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"cd-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"repo-url\"},{\"default\":\"master\",\"name\":\"branch\"}],\"tasks\":[{\"name\":\"clone\",\"params\":[{\"name\":\"repo-url\",\"value\":\"$(params.repo-url)\"},{\"name\":\"branch\",\"value\":\"$(params.branch)\"}],\"taskRef\":{\"name\":\"checkout\"}},{\"name\":\"lint\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"clone\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"tests\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"lint\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"build\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"tests\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"deploy\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"build\"],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"repo-url"},{"default":"master","name":"branch"}],"tasks":[{"name":"clone","params":[{"name":"repo-url","value":"$(params.repo-url)"},{"name":"branch","value":"$(params.branch)"}],"taskRef":{"name":"checkout"}},{"name":"lint","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["clone"],"taskRef":{"name":"echo"}},{"name":"tests","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["lint"],"taskRef":{"name":"echo"}},{"name":"build","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["tests"],"taskRef":{"name":"echo"}},{"name":"deploy","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["build"],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "cd-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.echo-message)": spec.tasks[1].params[echo-message], spec.tasks[2].params[echo-message], spec.tasks[3].params[echo-message], spec.tasks[4].params[echo-message]
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline     --showlog     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git"     -p branch="main"
+PipelineRun started: cd-pipeline-run-7fwq4
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline \
+>     --showlog \
+>     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git" \
+>     -p branch="main"
+PipelineRun started: cd-pipeline-run-58kds
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline     --showlog     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git"     -p branch="main"
+PipelineRun started: cd-pipeline-run-d2jvv
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[lint : echo-message] Calling ESLint linter…
+
+[tests : echo-message] Running unit tests with Jest…
+
+[build : echo-message] Building image for https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git ...
+
+[deploy : echo-message] Deploying main branch of https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git ...
+
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline     --showlog     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git"     -p branch="main"
+PipelineRun started: cd-pipeline-run-7wcgg
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[lint : echo-message] Calling ESLint linter…
+
+theia@theiaopenshift-michaellau41:/home/project$ git clone https://gitdeveloper-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git
+Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+remote: Enumerating objects: 96, done.
+remote: Counting objects: 100% (25/25), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 96 (delta 16), reused 9 (delta 9), pack-reused 71 (from 1)
+Receiving objects: 100% (96/96), 91.85 KiB | 13.12 MiB/s, done.
+Resolving deltas: 100% (35/35), done.
+theia@theiaopenshift-michaellau41:/home/project$ 
+theia@theiaopenshift-michaellau41:/home/project$ cd ttwst-jhxyb-ci-cd-labs/01_base_pipeline/
+theia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipeline_js/labs
+/01_base_pipeline$ 
+theia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipetheia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipetheia@theiaopenshift-michaellau41:/home/project/ttwst-jhxyb-ci-cd-pipeline_js/labs
+/01_base_pipeline$ export PS1="[\[\033[01;32m\]\u\[\033[00
+m\]: \[\033[01;34m\]\W\[\033[00m\]]\$ "
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+The Task "<place-name-here>" is invalid: metadata.name: Invalid value: "<place-name-here>": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+The Task "<place-name-here>" is invalid: metadata.name: Invalid value: "<place-name-here>": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": Pipeline in version "v1beta1" cannot be handled as a Pipeline: strict decoding error: unknown field "metadata.args", unknown field "metadata.command", unknown field "metadata.image"
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": Task in version "v1beta1" cannot be handled as a Task: strict decoding error: unknown field "metadata.args", unknown field "metadata.command", unknown field "metadata.image"
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal object into Go struct field TaskSpec.spec.steps of type []v1beta1.Step
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal object into Go struct field TaskSpec.spec.steps of type []v1beta1.Step
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal object into Go struct field TaskSpec.spec.steps of type []v1beta1.Step
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/hello-world created
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start --showlog hello-pipeline
+ 
+PipelineRun started: hello-pipeline-run-fc6tn
+Waiting for logs to be available...
+[hello : echo] Hello World
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when creating "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal string into Go struct field Step.spec.steps.args of type []string
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"hello-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"message\"}],\"tasks\":[{\"name\":\"hello\",\"taskRef\":{\"name\":\"echo\",\"params\":[{\"name\":\"message\",\"value\":\"${params.message}\"}]}}]}}\n"}},"spec":{"params":[{"name":"message"}],"tasks":[{"name":"hello","taskRef":{"name":"echo","params":[{"name":"message","value":"${params.message}"}]}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "hello-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: expected exactly one, got both: spec.tasks[0].taskRef.name, spec.tasks[0].taskRef.params
+missing field(s): spec.tasks[0].taskRef.resolver
+resolver params requires "enable-api-fields" feature gate to be "alpha" or "beta" but it is "stable": 
+taskref.params requires "enable-api-fields" feature gate to be "alpha" or "beta" but it is "stable": 
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-tfrfj
+Waiting for logs to be available...
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-7cn6s
+Waiting for logs to be available...
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-r8gn4
+Waiting for logs to be available...
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":\"${params.message}\",\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":"${params.message}","command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "webhook.pipeline.tekton.dev" denied the request: mutation failed: cannot decode incoming new object: json: cannot unmarshal string into Go struct field Step.spec.steps.args of type []string
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-message\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-message"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.steps[0].args[0]
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline \
+>     --showlog  \
+>     -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-sdbnm
+Waiting for logs to be available...
+[hello : echo-message] ${params.message}
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"hello-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"message\"}],\"tasks\":[{\"name\":\"hello\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"message"}],"tasks":[{"name":"hello","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "hello-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.echo-message)": spec.tasks[0].params[echo-message]
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"hello-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"message\"}],\"tasks\":[{\"name\":\"hello\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"message"}],"tasks":[{"name":"hello","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "hello-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.echo-message)": spec.tasks[0].params[echo-message]
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start hello-pipeline     --showlog      -p message="Hello Tekton!"
+PipelineRun started: hello-pipeline-run-wth89
+Waiting for logs to be available...
+[hello : echo-message] Hello Tekton!
+
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Task\",\"metadata\":{\"annotations\":{},\"name\":\"echo\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"description\":\"The message to echo\",\"name\":\"echo-message\",\"type\":\"string\"}],\"steps\":[{\"args\":[\"$(params.echo-message)\"],\"command\":[\"/bin/echo\"],\"image\":\"alpine:3\",\"name\":\"echo-messageX\"}]}}\n"}},"spec":{"steps":[{"args":["$(params.echo-message)"],"command":["/bin/echo"],"image":"alpine:3","name":"echo-messageX"}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=tasks", GroupVersionKind: "tekton.dev/v1beta1, Kind=Task"
+Name: "echo", Namespace: "sn-labs-michaellau41"
+for: "tasks.yaml": error when patching "tasks.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: invalid value "echo-messageX": spec.steps[0].name
+Task step name must be a valid DNS Label, For more info refer to https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+[theia: 01_base_pipeline]$ kubectl apply -f tasks.yaml
+task.tekton.dev/echo configured
+task.tekton.dev/checkout created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline created
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline \
+>     --showlog \
+>     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git" \
+>     -p branch="main"
+PipelineRun started: cd-pipeline-run-ss5w9
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"cd-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"repo-url\"},{\"default\":\"master\",\"name\":\"branch\"}],\"tasks\":[{\"name\":\"clone\",\"params\":[{\"name\":\"repo-url\",\"value\":\"$(params.repo-url)\"},{\"name\":\"branch\",\"value\":\"$(params.branch)\"}],\"taskRef\":{\"name\":\"checkout\"}},{\"name\":\"lint\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"clone\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"tests\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"lint\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"build\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"tests\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"deploy\",\"params\":[{\"name\":\"message\",\"value\":\"$(params.message)\"}],\"runAfter\":[\"build\"],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"repo-url"},{"default":"master","name":"branch"}],"tasks":[{"name":"clone","params":[{"name":"repo-url","value":"$(params.repo-url)"},{"name":"branch","value":"$(params.branch)"}],"taskRef":{"name":"checkout"}},{"name":"lint","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["clone"],"taskRef":{"name":"echo"}},{"name":"tests","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["lint"],"taskRef":{"name":"echo"}},{"name":"build","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["tests"],"taskRef":{"name":"echo"}},{"name":"deploy","params":[{"name":"message","value":"$(params.message)"}],"runAfter":["build"],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "cd-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.message)": spec.tasks[1].params[message], spec.tasks[2].params[message], spec.tasks[3].params[message], spec.tasks[4].params[message]
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+Error from server (BadRequest): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"tekton.dev/v1beta1\",\"kind\":\"Pipeline\",\"metadata\":{\"annotations\":{},\"name\":\"cd-pipeline\",\"namespace\":\"sn-labs-michaellau41\"},\"spec\":{\"params\":[{\"name\":\"repo-url\"},{\"default\":\"master\",\"name\":\"branch\"}],\"tasks\":[{\"name\":\"clone\",\"params\":[{\"name\":\"repo-url\",\"value\":\"$(params.repo-url)\"},{\"name\":\"branch\",\"value\":\"$(params.branch)\"}],\"taskRef\":{\"name\":\"checkout\"}},{\"name\":\"lint\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"clone\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"tests\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"lint\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"build\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"tests\"],\"taskRef\":{\"name\":\"echo\"}},{\"name\":\"deploy\",\"params\":[{\"name\":\"echo-message\",\"value\":\"$(params.echo-message)\"}],\"runAfter\":[\"build\"],\"taskRef\":{\"name\":\"echo\"}}]}}\n"}},"spec":{"params":[{"name":"repo-url"},{"default":"master","name":"branch"}],"tasks":[{"name":"clone","params":[{"name":"repo-url","value":"$(params.repo-url)"},{"name":"branch","value":"$(params.branch)"}],"taskRef":{"name":"checkout"}},{"name":"lint","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["clone"],"taskRef":{"name":"echo"}},{"name":"tests","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["lint"],"taskRef":{"name":"echo"}},{"name":"build","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["tests"],"taskRef":{"name":"echo"}},{"name":"deploy","params":[{"name":"echo-message","value":"$(params.echo-message)"}],"runAfter":["build"],"taskRef":{"name":"echo"}}]}}
+to:
+Resource: "tekton.dev/v1beta1, Resource=pipelines", GroupVersionKind: "tekton.dev/v1beta1, Kind=Pipeline"
+Name: "cd-pipeline", Namespace: "sn-labs-michaellau41"
+for: "pipeline.yaml": error when patching "pipeline.yaml": admission webhook "validation.webhook.pipeline.tekton.dev" denied the request: validation failed: non-existent variable in "$(params.echo-message)": spec.tasks[1].params[echo-message], spec.tasks[2].params[echo-message], spec.tasks[3].params[echo-message], spec.tasks[4].params[echo-message]
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline     --showlog     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git"     -p branch="main"
+PipelineRun started: cd-pipeline-run-7fwq4
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline \
+>     --showlog \
+>     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git" \
+>     -p branch="main"
+PipelineRun started: cd-pipeline-run-58kds
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[theia: 01_base_pipeline]$ 
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline     --showlog     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git"     -p branch="main"
+PipelineRun started: cd-pipeline-run-d2jvv
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[lint : echo-message] Calling ESLint linter…
+
+[tests : echo-message] Running unit tests with Jest…
+
+[build : echo-message] Building image for https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git ...
+
+[deploy : echo-message] Deploying main branch of https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git ...
+
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ kubectl apply -f pipeline.yaml
+pipeline.tekton.dev/hello-pipeline configured
+pipeline.tekton.dev/cd-pipeline configured
+[theia: 01_base_pipeline]$ tkn pipeline start cd-pipeline     --showlog     -p repo-url="https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git"     -p branch="main"
+PipelineRun started: cd-pipeline-run-7wcgg
+Waiting for logs to be available...
+[clone : checkout] Cloning into 'ttwst-jhxyb-ci-cd-pipeline_js'...
+
+[lint : echo-message] Calling ESLint linter…
+
+[tests : echo-message] Running unit tests with Jest…
+
+[build : echo-message] Building image for https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git ...
+
+[deploy : echo-message] Deploying main branch of https://github.com/ibm-developer-skills-network/ttwst-jhxyb-ci-cd-pipeline_js.git ...
+
+[theia: 01_base_pipeline]$ 
