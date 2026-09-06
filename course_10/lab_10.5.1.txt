@@ -1,0 +1,328 @@
+lab 10.5.1
+
+!!! need to config the connection string to mongodb's and start the db !!!!
+
+===================================================
+
+
+theia@theiadocker-michaellau41:/home/project$ cd /home/project
+theia@theiadocker-michaellau41:/home/project$ 
+theia@theiadocker-michaellau41:/home/project$ git clone https://github.com/ibm-developer-skills-network/abltc-backend-nodejs-customerportal.git
+Cloning into 'abltc-backend-nodejs-customerportal'...
+remote: Enumerating objects: 36, done.
+remote: Counting objects: 100% (14/14), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 36 (delta 10), reused 8 (delta 8), pack-reused 22 (from 1)
+Receiving objects: 100% (36/36), 143.55 KiB | 28.71 MiB/s, done.
+Resolving deltas: 100% (13/13), done.
+theia@theiadocker-michaellau41:/home/project$ 
+theia@theiadocker-michaellau41:/home/project$ cd abltc-backend-nodejs-customerportal
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+npm install
+
+
+added 91 packages, and audited 92 packages in 3s
+
+12 packages are looking for funding
+  run `npm fund` for details
+
+10 vulnerabilities (5 low, 1 moderate, 3 high, 1 critical)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+npm audit ffix
+# npm audit report
+
+body-parser  <=2.0.2
+Severity: high
+body-parser vulnerable to denial of service when url encoding is enabled - https://github.com/advisories/GHSA-qwcr-r2fm-qrc7
+body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement - https://github.com/advisories/GHSA-v422-hmwv-36x6
+Depends on vulnerable versions of qs
+fix available via `npm audit fix`
+node_modules/body-parser
+node_modules/express/node_modules/body-parser
+  express  <=5.0.1
+  Depends on vulnerable versions of body-parser
+  Depends on vulnerable versions of cookie
+  Depends on vulnerable versions of path-to-regexp
+  Depends on vulnerable versions of qs
+  Depends on vulnerable versions of send
+  Depends on vulnerable versions of serve-static
+  node_modules/express
+
+cookie  <0.7.0
+cookie accepts cookie name, path, and domain with out of bounds characters - https://github.com/advisories/GHSA-pxg6-pf52-xh8x
+fix available via `npm audit fix`
+node_modules/cookie
+node_modules/express-session/node_modules/cookie
+  express-session  1.0.1 - 1.18.1
+  Depends on vulnerable versions of cookie
+  Depends on vulnerable versions of on-headers
+  node_modules/express-session
+
+
+mongoose  8.0.0-rc0 - 8.24.0
+Severity: critical
+Mongoose search injection vulnerability - https://github.com/advisories/GHSA-m7xq-9374-9rvx
+Mongoose search injection vulnerability - https://github.com/advisories/GHSA-vg7j-7cwx-8wgw
+Mongoose's Improper Sanitization of $nor in sanitizeFilter May Allow NoSQL Injection - https://github.com/advisories/GHSA-wpg9-53fq-2r8h
+Mongoose: Prototype pollution in mongoose update casting via __proto__-prefixed dotted path (Schema._getSchema/path getter) - https://github.com/advisories/GHSA-664h-wqgq-64gw
+fix available via `npm audit fix`
+node_modules/mongoose
+
+on-headers  <1.1.0
+on-headers is vulnerable to http response header manipulation - https://github.com/advisories/GHSA-76c9-3jph-rj3q
+fix available via `npm audit fix`
+node_modules/on-headers
+
+path-to-regexp  <=0.1.12
+Severity: high
+path-to-regexp outputs backtracking regular expressions - https://github.com/advisories/GHSA-9wv6-86v2-598j
+path-to-regexp contains a ReDoS - https://github.com/advisories/GHSA-rhx6-c78j-4q9w
+path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters - https://github.com/advisories/GHSA-37ch-88jc-xwx2
+fix available via `npm audit fix`
+node_modules/path-to-regexp
+
+qs  <=6.15.3
+Severity: moderate
+qs's arrayLimit bypass in comma parsing allows denial of service - https://github.com/advisories/GHSA-w7fw-mjwx-w883
+qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion - https://github.com/advisories/GHSA-6rw7-vpxm-498p
+qs: Denial of Service via Attacker Controlled isBuffer - https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
+fix available via `npm audit fix`
+node_modules/qs
+
+send  <0.19.0
+send vulnerable to template injection that can lead to XSS - https://github.com/advisories/GHSA-m6fv-jmcg-4jfg
+fix available via `npm audit fix`
+node_modules/send
+  serve-static  <=1.16.0
+  Depends on vulnerable versions of send
+  node_modules/serve-static
+
+
+10 vulnerabilities (5 low, 1 moderate, 3 high, 1 critical)
+
+To address all issues, run:
+  npm audit fix
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+npm audit fix 
+
+added 11 packages, removed 10 packages, changed 32 packages, and audited 93 packages in 4s
+
+17 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+qs  2.2.5 - 6.15.3
+Severity: moderate
+qs array-limit bypass via bracket-key comma parsing - https://github.com/advisories/GHSA-x5fp-wj9c-mxmx
+qs: Denial of Service via Attacker Controlled isBuffer - https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
+fix available via `npm audit fix`
+node_modules/qs
+  body-parser  1.20.5 - 1.20.6
+  Depends on vulnerable versions of qs
+  node_modules/body-parser
+  express  4.22.2
+  Depends on vulnerable versions of body-parser
+  Depends on vulnerable versions of qs
+  node_modules/express
+
+3 moderate severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+touch Dockerfile
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+==============
+FROM node:18.12.1-bullseye-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install app dependencies
+RUN npm install
+
+# Copy necessary files
+COPY . .
+
+# Expose port 3000 (adjust the port based on your application)
+EXPOSE 3000
+
+# CMD to run the application
+CMD [ "node", "customer_app.js" ]
+================
+
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ 
+touch docker-compose.yml
+
+===============
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+ 
+  app:
+    image: customerapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+ 
+networks:
+  app-network:
+    driver: bridge
+===============
+
+>> docker build . -t customerapp
+docker build . -t customerapp
+[+] Building 25.7s (10/10) FINISHED                         docker:default
+ => [internal] load build definition from Dockerfile                  0.0s
+ => => transferring dockerfile: 437B                                  0.0s
+ => [internal] load metadata for docker.io/library/node:18.12.1-bull  1.2s
+ => [internal] load .dockerignore                                     0.0s
+ => => transferring context: 2B                                       0.0s
+ => [1/5] FROM docker.io/library/node:18.12.1-bullseye-slim@sha256:  14.1s
+ => => resolve docker.io/library/node:18.12.1-bullseye-slim@sha256:0  0.0s
+ => => sha256:0c3ea57b6c560f83120801e222691d9bd187c6 1.37kB / 1.37kB  0.0s
+ => => sha256:a26e85f2ac4163ff881438833dd8f4f6f7282b 6.80kB / 6.80kB  0.0s
+ => => sha256:3f4ca61aafcd4fc07267a105067db35c0f0a 31.40MB / 31.40MB  7.0s
+ => => sha256:00fde01815c92cc90586fcf531723ab210577a 4.18kB / 4.18kB  0.5s
+ => => sha256:723367e6ef2d175cd363a4ca96a65ac6fa3f 45.15MB / 45.15MB  9.8s
+ => => sha256:907e6809ddf0f1b24bb5a93c1f0f01034e905f 2.77MB / 2.77MB  1.9s
+ => => sha256:128624e9c76ab0636e60e3fe2463e9a710346c68f4 451B / 451B  2.3s
+ => => extracting sha256:3f4ca61aafcd4fc07267a105067db35c0f0ac630e19  3.6s
+ => => extracting sha256:00fde01815c92cc90586fcf531723ab210577a0f1cb  0.0s
+ => => extracting sha256:723367e6ef2d175cd363a4ca96a65ac6fa3f388506d  3.0s
+ => => extracting sha256:907e6809ddf0f1b24bb5a93c1f0f01034e905fa3a4c  0.1s
+ => => extracting sha256:128624e9c76ab0636e60e3fe2463e9a710346c68f47  0.0s
+ => [internal] load build context                                     0.9s
+ => => transferring context: 14.07MB                                  0.8s
+ => [2/5] WORKDIR /app                                                5.5s
+ => [3/5] COPY package*.json ./                                       0.1s
+ => [4/5] RUN npm install                                             3.0s
+ => [5/5] COPY . .                                                    1.0s
+ => exporting to image                                                0.7s
+ => => exporting layers                                               0.7s
+ => => writing image sha256:4f10c48a4698f827e374f8795bd21036f6e99df3  0.0s
+ => => naming to docker.io/library/customerapp                        0.0s
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerp
+ortal$ 
+============
+The docker-compose.yml has been created to run two containers, one for Mongo and the other for the Node app. Run the following command to run the server:
+===========
+>> docker-compose up
+
+============
+theia@theiadocker-michaellau41:/home/project/abltc-backend-nodejs-customerportal$ docker-compose up
+WARN[0000] /home/project/abltc-backend-nodejs-customerportal/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 1/1
+ ✔ Container abltc-backend-nodejs-customerportal-app-1  Recreated                                             0.1s 
+Attaching to app-1, mongodb-1
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.276+00:00"},"s":"I",  "c":"-",        "id":8991200, "ctx":"main","msg":"Shuffling initializers","attr":{"seed":3362813076}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.289+00:00"},"s":"I",  "c":"CONTROL",  "id":97374,   "ctx":"main","msg":"Automatically disabling TLS 1.0 and TLS 1.1, to force-enable TLS 1.1 specify --sslDisabledProtocols 'TLS1_0'; to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"I",  "c":"NETWORK",  "id":4915701, "ctx":"main","msg":"Initialized wire specification","attr":{"spec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":27},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":27},"outgoing":{"minWireVersion":6,"maxWireVersion":27},"isInternalClient":true}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"I",  "c":"CONTROL",  "id":5945603, "ctx":"main","msg":"Multi threading initialized"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"I",  "c":"CONTROL",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":1,"port":27017,"dbPath":"/data/db","architecture":"64-bit","host":"2f39461aa458"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"W",  "c":"CONTROL",  "id":20720,   "ctx":"initandlisten","msg":"Memory available to mongo process is less than total system memory","attr":{"availableMemSizeMB":7629,"systemMemSizeMB":124556}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"8.2.3","gitVersion":"36f41c9c30a2f13f834d033ba03c3463c891fb01","openSSLVersion":"OpenSSL 3.0.13 30 Jan 2024","modules":[],"allocator":"tcmalloc-google","environment":{"distmod":"ubuntu2404","distarch":"x86_64","target_arch":"x86_64"}}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Ubuntu","version":"24.04"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.293+00:00"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"net":{"bindIp":"*"}}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.294+00:00"},"s":"I",  "c":"NETWORK",  "id":4648601, "ctx":"initandlisten","msg":"Implicit TCP FastOpen unavailable. If TCP FastOpen is required, set at least one of the related parameters","attr":{"relatedParameters":["tcpFastOpenServer","tcpFastOpenClient","tcpFastOpenQueueSize"]}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.295+00:00"},"s":"I",  "c":"STORAGE",  "id":22270,   "ctx":"initandlisten","msg":"Storage engine to use detected by data files","attr":{"dbpath":"/data/db","storageEngine":"wiredTiger"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.295+00:00"},"s":"I",  "c":"STORAGE",  "id":22297,   "ctx":"initandlisten","msg":"Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem","tags":["startupWarnings"]}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.296+00:00"},"s":"I",  "c":"STORAGE",  "id":22315,   "ctx":"initandlisten","msg":"Opening WiredTiger","attr":{"config":"create,cache_size=3302M,session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,remove=true,path=journal,compressor=snappy),builtin_extension_config=(zstd=(compression_level=6)),file_manager=(close_idle_time=600,close_scan_interval=10,close_handle_minimum=2000),statistics_log=(wait=0),json_output=(error,message),verbose=[recovery_progress:1,checkpoint_progress:1,compact_progress:1,live_restore_progress:1,backup:0,checkpoint:0,compact:0,eviction:0,fileops:0,history_store:0,live_restore:0,recovery:0,rts:0,salvage:0,tiered:0,timestamp:0,transaction:0,verify:0,log:0],prefetch=(available=true,default=false),"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.307+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":307573,"thread":"1:0x7491bc19c400","session_name":"wiredtiger_open","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"opening the WiredTiger library"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.354+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":354496,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"connection configuration string parsing completed"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.355+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":355792,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting WiredTiger utility threads"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.363+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":363309,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting WiredTiger recovery"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.363+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":363753,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Recovering log 4 through 5"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.416+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":416648,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Recovering log 5 through 5"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.515+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":515845,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"scanning metadata to find the largest file ID"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.516+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":516325,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"largest file ID found in the metadata 10"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.517+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":517318,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"Main recovery loop: starting at 4,5760 to 5,256"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.637+00:00"},"s":"I",  "c":"WTEVICT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":637099,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_EVICTION","log_id":1000000,"category_id":15,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting eviction threads"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.638+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":638175,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Recovering log 4 through 5"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.705+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":705698,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Recovering log 5 through 5"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.764+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":764552,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery log replay has successfully finished and ran for 401 milliseconds"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.764+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":764759,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Set global recovery timestamp: (0, 0)"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.764+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":764791,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Set global oldest timestamp: (0, 0)"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.764+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":764872,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"[RECOVERY_RTS] performing recovery rollback_to_stable with stable_timestamp=(0, 0) and oldest_timestamp=(0, 0)"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.766+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":766475,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery rollback to stable has successfully finished and ran for 1 milliseconds"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.766+00:00"},"s":"I",  "c":"WTEVICT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":766609,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_EVICTION","log_id":1000000,"category_id":15,"verbose_level":"INFO","verbose_level_id":0,"msg":"stopping eviction threads"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.766+00:00"},"s":"I",  "c":"WTEVICT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":766728,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_EVICTION","log_id":1000000,"category_id":15,"verbose_level":"INFO","verbose_level_id":0,"msg":"waiting for eviction threads to stop"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.766+00:00"},"s":"I",  "c":"WTEVICT",  "id":22430,   "ctx":"thread8","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":766789,"thread":"1:0x7491b81726c0","session_name":"eviction-server","category":"WT_VERB_EVICTION","log_id":1000000,"category_id":15,"verbose_level":"INFO","verbose_level_id":0,"msg":"eviction thread exiting"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.769+00:00"},"s":"I",  "c":"WTCHKPT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":769689,"thread":"1:0x7491bc19c400","session_name":"WT_SESSION.checkpoint","category":"WT_VERB_CHECKPOINT","log_id":1000000,"category_id":5,"verbose_level":"INFO","verbose_level_id":0,"msg":"Checkpoint requested at stable timestamp (0, 0)"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.770+00:00"},"s":"I",  "c":"WTCHKPT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":770169,"thread":"1:0x7491bc19c400","session_name":"WT_SESSION.checkpoint","category":"WT_VERB_CHECKPOINT_PROGRESS","log_id":1000000,"category_id":7,"verbose_level":"INFO","verbose_level_id":0,"msg":"saving checkpoint snapshot min: 1, snapshot max: 1 snapshot count: 0, oldest timestamp: (0, 0) , meta checkpoint timestamp: (0, 0) base write gen: 73"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.781+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":781768,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery checkpoint has successfully finished and ran for 14 milliseconds"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.781+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":781860,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1493201,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery was completed successfully and took 418ms, including 401ms for the log replay, 1ms for the rollback to stable, and 14ms for the checkpoint."}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.781+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":781932,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1493201,"category_id":33,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery was completed successfully and took 418ms, including 401ms for the log replay, 1ms for the rollback to stable, and 14ms for the checkpoint."}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.783+00:00"},"s":"I",  "c":"WTEVICT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":783376,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_EVICTION","log_id":1000000,"category_id":15,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting eviction threads"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.787+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":787644,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"WiredTiger utility threads started successfully"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.787+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":787704,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"the WiredTiger library has successfully opened"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.787+00:00"},"s":"I",  "c":"STORAGE",  "id":4795906, "ctx":"initandlisten","msg":"WiredTiger opened","attr":{"durationMillis":491}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.787+00:00"},"s":"I",  "c":"RECOVERY", "id":23987,   "ctx":"initandlisten","msg":"WiredTiger recoveryTimestamp","attr":{"recoveryTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.787+00:00"},"s":"I",  "c":"STORAGE",  "id":9086700, "ctx":"initandlisten","msg":"WiredTiger session cache max value has been set","attr":{"sessionCacheMax":16500}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.788+00:00"},"s":"I",  "c":"STORAGE",  "id":10158000,"ctx":"initandlisten","msg":"Opening spill WiredTiger","attr":{"config":"create,cache_size=190M,session_max=1024,eviction=(threads_min=1,threads_max=1),eviction_dirty_target=9MB,eviction_dirty_trigger=152MB,eviction_updates_trigger=152MB,config_base=false,statistics=(fast),log=(enabled=false),builtin_extension_config=(zstd=(compression_level=-7)),file_manager=(close_idle_time=600,close_scan_interval=10,close_handle_minimum=2000),statistics_log=(wait=0),json_output=(error,message),verbose=[recovery_progress:1,checkpoint_progress:1,compact_progress:1,live_restore_progress:1,backup:0,checkpoint:0,compact:0,eviction:0,fileops:0,history_store:0,live_restore:0,recovery:0,rts:0,salvage:0,tiered:0,timestamp:0,transaction:0,verify:0,log:0],"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.792+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":792820,"thread":"1:0x7491bc19c400","session_name":"wiredtiger_open","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"opening the WiredTiger library"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.795+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":795359,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"connection configuration string parsing completed"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.802+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":802782,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting WiredTiger utility threads"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803171,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting WiredTiger recovery"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803341,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"scanning metadata to find the largest file ID"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803400,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"largest file ID found in the metadata 0"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803434,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery log replay has successfully finished and ran for 0 milliseconds"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803470,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Set global recovery timestamp: (0, 0)"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803507,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1000000,"category_id":33,"verbose_level":"DEBUG_1","verbose_level_id":1,"msg":"Set global oldest timestamp: (0, 0)"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803562,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY","log_id":1493201,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery was completed successfully and took 0ms, including 0ms for the log replay, 0ms for the rollback to stable, and 0ms for the checkpoint."}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.803+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":803589,"thread":"1:0x7491bc19c400","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","log_id":1493201,"category_id":33,"verbose_level":"INFO","verbose_level_id":0,"msg":"recovery was completed successfully and took 0ms, including 0ms for the log replay, 0ms for the rollback to stable, and 0ms for the checkpoint."}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.820+00:00"},"s":"I",  "c":"WTEVICT",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":820506,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_EVICTION","log_id":1000000,"category_id":15,"verbose_level":"INFO","verbose_level_id":0,"msg":"starting eviction threads"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.821+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":821530,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"WiredTiger utility threads started successfully"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.821+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1788712219,"ts_usec":821601,"thread":"1:0x7491bc19c400","session_name":"connection","category":"WT_VERB_RECOVERY","log_id":1000000,"category_id":32,"verbose_level":"INFO","verbose_level_id":0,"msg":"the WiredTiger library has successfully opened"}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.821+00:00"},"s":"I",  "c":"STORAGE",  "id":10158001,"ctx":"initandlisten","msg":"Spill WiredTiger opened","attr":{"durationMillis":33}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.823+00:00"},"s":"I",  "c":"STORAGE",  "id":9529901, "ctx":"initandlisten","msg":"Initializing durable catalog","attr":{"numRecords":3}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.824+00:00"},"s":"I",  "c":"STORAGE",  "id":9529902, "ctx":"initandlisten","msg":"Retrieving all idents from storage engine"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.824+00:00"},"s":"I",  "c":"STORAGE",  "id":9529903, "ctx":"initandlisten","msg":"Initializing all collections in durable catalog","attr":{"numEntries":3}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.827+00:00"},"s":"W",  "c":"CONTROL",  "id":22120,   "ctx":"initandlisten","msg":"Access control is not enabled for the database. Read and write access to data and configuration is unrestricted","tags":["startupWarnings"]}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.837+00:00"},"s":"W",  "c":"CONTROL",  "id":22167,   "ctx":"initandlisten","msg":"You are running on a NUMA machine. We suggest launching mongod like this to avoid performance problems: numactl --interleave=all mongod [other options]","tags":["startupWarnings"]}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.837+00:00"},"s":"W",  "c":"CONTROL",  "id":9068900, "ctx":"initandlisten","msg":"For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile","attr":{"allocator":"tcmalloc-google","sysfsFile":"/sys/kernel/mm/transparent_hugepage/enabled","currentValue":"never","desiredValue":"always"},"tags":["startupWarnings"]}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.837+00:00"},"s":"W",  "c":"CONTROL",  "id":9068900, "ctx":"initandlisten","msg":"For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile","attr":{"allocator":"tcmalloc-google","sysfsFile":"/sys/kernel/mm/transparent_hugepage/defrag","currentValue":"madvise","desiredValue":"defer+madvise"},"tags":["startupWarnings"]}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.837+00:00"},"s":"W",  "c":"CONTROL",  "id":8640302, "ctx":"initandlisten","msg":"We suggest setting the contents of sysfsFile to 0.","attr":{"sysfsFile":"/sys/kernel/mm/transparent_hugepage/khugepaged/max_ptes_none","currentValue":511},"tags":["startupWarnings"]}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.840+00:00"},"s":"I",  "c":"NETWORK",  "id":4915702, "ctx":"initandlisten","msg":"Updated wire specification","attr":{"oldSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":27},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":27},"outgoing":{"minWireVersion":6,"maxWireVersion":27},"isInternalClient":true},"newSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":27},"incomingInternalClient":{"minWireVersion":27,"maxWireVersion":27},"outgoing":{"minWireVersion":27,"maxWireVersion":27},"isInternalClient":true}}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.840+00:00"},"s":"I",  "c":"REPL",     "id":5853300, "ctx":"initandlisten","msg":"current featureCompatibilityVersion value","attr":{"featureCompatibilityVersion":"8.2","context":"startup"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.840+00:00"},"s":"I",  "c":"STORAGE",  "id":5071100, "ctx":"initandlisten","msg":"Clearing temp directory"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.840+00:00"},"s":"I",  "c":"STORAGE",  "id":10682200,"ctx":"initandlisten","msg":"Dropping spill idents","attr":{"numIdents":0}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.840+00:00"},"s":"I",  "c":"CONTROL",  "id":6608200, "ctx":"initandlisten","msg":"Initializing cluster server parameters from disk"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.841+00:00"},"s":"I",  "c":"CONTROL",  "id":20536,   "ctx":"initandlisten","msg":"Flow Control is enabled on this deployment"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.841+00:00"},"s":"I",  "c":"FTDC",     "id":20625,   "ctx":"initandlisten","msg":"Initializing full-time diagnostic data capture","attr":{"dataDirectory":"/data/db/diagnostic.data"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.845+00:00"},"s":"I",  "c":"REPL",     "id":6015317, "ctx":"initandlisten","msg":"Setting new configuration state","attr":{"newState":"ConfigReplicationDisabled","oldState":"ConfigPreStart"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.845+00:00"},"s":"I",  "c":"STORAGE",  "id":22262,   "ctx":"initandlisten","msg":"Timestamp monitor starting"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.845+00:00"},"s":"I",  "c":"STORAGE",  "id":7333401, "ctx":"initandlisten","msg":"Starting the DiskSpaceMonitor"}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.847+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"/tmp/mongodb-27017.sock"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.847+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"0.0.0.0:27017"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.847+00:00"},"s":"I",  "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections","attr":{"port":27017,"ssl":"off"}}
+mongodb-1  | {"t":{"$date":"2026-09-06T16:30:19.847+00:00"},"s":"I",  "c":"CONTROL",  "id":8423403, "ctx":"initandlisten","msg":"mongod startup complete","attr":{"Summary of time elapsed":{"Startup from clean shutdown?":true,"Statistics":{"setUpPeriodicRunnerMillis":0,"setUpOCSPMillis":1,"setUpTransportLayerMillis":0,"initSyncCrashRecoveryMillis":0,"createLockFileMillis":0,"getStorageEngineMetadataMillis":0,"validateMetadataMillis":0,"createStorageEngineMillis":529,"writePIDMillis":0,"initializeFCVForIndexMillis":2,"dropAbandonedIdentsMillis":0,"standaloneClusterParamsMillis":0,"userAndRolesGraphMillis":0,"waitForMajorityServiceMillis":1,"startUpReplCoordMillis":2,"recoverChangeStreamMillis":0,"logStartupOptionsMillis":0,"startUpTransportLayerMillis":0,"initAndListenTotalMillis":554}}}}
+app-1      | Server is running on http://localhost:3000
+
+
+w Enable Watch
