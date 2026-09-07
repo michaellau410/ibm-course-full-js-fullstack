@@ -1,0 +1,467 @@
+start from a simple node app
+
+then build it into an image (put the app into a docker container)
+
+in this lab, it is using "code engine" as a place to keep and run container image
+
+=============================
+file 1:
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
+const app = express();
+const port = 3000;
+
+// Set up storage for uploaded files
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Specify the upload directory
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Use the original file name
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Error handling middleware for Express
+app.use((err, req, res, next) => {
+    // Set default status code and status message if not provided in the error object
+    err.statusCode = err.statusCode || 500;
+    err.status = err.status || "Error";
+
+    // Log the error stack to the console for debugging purposes
+    console.log(err.stack);
+
+    // Respond to the client with a JSON object containing error details
+    res.status(err.statusCode).json({
+        status: err.statusCode,
+        message: err.message,
+    });
+});
+
+// Serve the HTML form for file upload
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Handle file upload
+app.post('/upload', upload.single('file'), (req, res, next) => {
+  if (!req.file) {
+    return next(new Error('No file uploaded.'));
+  }
+
+  // Access the uploaded file information
+  const uploadedFile = req.file;
+  console.log('Uploaded file:', uploadedFile);
+
+  res.send('File '+uploadedFile.originalname+' uploaded!');
+});
+
+// Serve uploaded files using express.static middleware
+app.use('/file', express.static('uploads'));
+
+// Catch-all middleware for handling undefined routes/endpoints
+app.all("*", (req, res, next) => {
+    // Create a new Error object with a descriptive message and status
+    const err = new Error(`Cannot find the URL ${req.originalUrl} in this application. Please check.`);
+
+    // Set custom status and statusCode properties for the error
+    err.status = "Endpoint Failure";
+    err.statusCode = 404;
+
+    // Pass the error to the next middleware to trigger error handling
+    next(err);
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+file 2:
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <h1>File Upload</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+  </form>
+</body>
+</html>
+
+
+file 3: dockerfile
+FROM node:18.12.1-bullseye-slim
+
+RUN npm install -g npm@9.1.3
+
+ADD package.json .
+ADD serverapp.js .
+COPY . .
+RUN mkdir -p uploads
+RUN npm install
+
+EXPOSE 3000
+
+CMD [ "node", "serverapp.js" ]
+
+
+
+
+
+
+=================== 
+
+theia@theiadocker-michaellau41:/home/project$ mkdir serverapp
+theia@theiadocker-michaellau41:/home/project$ cd serverapp
+theia@theiadocker-michaellau41:/home/project/serverapp$ npm init -y
+Wrote to /home/project/serverapp/package.json:
+
+{
+  "name": "serverapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+
+theia@theiadocker-michaellau41:/home/project/serverapp$ npm install express@4 multer
+
+added 78 packages, and audited 79 packages in 3s
+
+16 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+theia@theiadocker-michaellau41:/home/project/serverapp$ touch serverapp.js
+theia@theiadocker-michaellau41:/home/project/serverapp$ touch index.html
+theia@theiadocker-michaellau41:/home/project/serverapp$ mkdir uploads
+theia@theiadocker-michaellau41:/home/project/serverapp$ node serverapp.js
+Server is running on http://localhost:3000
+Error: Cannot find the URL /file/ in this application. Please check.
+    at /home/project/serverapp/serverapp.js:60:17
+    at Layer.handle [as handle_request] (/home/project/serverapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:149:13)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at Route.dispatch (/home/project/serverapp/node_modules/express/lib/router/route.js:119:3)
+Error: Cannot find the URL /file/ in this application. Please check.
+    at /home/project/serverapp/serverapp.js:60:17
+    at Layer.handle [as handle_request] (/home/project/serverapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:149:13)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at Route.dispatch (/home/project/serverapp/node_modules/express/lib/router/route.js:119:3)
+Error: Cannot find the URL /upload in this application. Please check.
+    at /home/project/serverapp/serverapp.js:60:17
+    at Layer.handle [as handle_request] (/home/project/serverapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:149:13)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at Route.dispatch (/home/project/serverapp/node_modules/express/lib/router/route.js:119:3)
+Uploaded file: {
+  fieldname: 'file',
+  originalname: 'Screenshot 2026-09-03 174502.png',
+  encoding: '7bit',
+  mimetype: 'image/png',
+  path: 'uploads/Screenshot 2026-09-03 174502.png',
+  destination: 'uploads/',
+  filename: 'Screenshot 2026-09-03 174502.png',
+  size: 2906898
+}
+^C
+theia@theiadocker-michaellau41:/home/project/serverapp$ touch Dockerfile
+theia@theiadocker-michaellau41:/home/project/serverapp$ docker build . -t uploadapp
+[+] Building 36.0s (12/12) FINISHED                          docker:default
+ => [internal] load build definition from Dockerfile                   0.1s
+ => => transferring dockerfile: 231B                                   0.0s
+ => [internal] load metadata for docker.io/library/node:18.12.1-bulls  1.0s
+ => [internal] load .dockerignore                                      0.0s
+ => => transferring context: 2B                                        0.0s
+ => [internal] load build context                                      0.4s
+ => => transferring context: 5.70MB                                    0.4s
+ => [1/7] FROM docker.io/library/node:18.12.1-bullseye-slim@sha256:0  15.4s
+ => => resolve docker.io/library/node:18.12.1-bullseye-slim@sha256:0c  0.0s
+ => => sha256:3f4ca61aafcd4fc07267a105067db35c0f0ac 31.40MB / 31.40MB  7.9s
+ => => sha256:00fde01815c92cc90586fcf531723ab210577a0 4.18kB / 4.18kB  0.4s
+ => => sha256:723367e6ef2d175cd363a4ca96a65ac6fa3f 45.15MB / 45.15MB  10.5s
+ => => sha256:0c3ea57b6c560f83120801e222691d9bd187c60 1.37kB / 1.37kB  0.0s
+ => => sha256:a26e85f2ac4163ff881438833dd8f4f6f7282b6 6.80kB / 6.80kB  0.0s
+ => => sha256:907e6809ddf0f1b24bb5a93c1f0f01034e905fa 2.77MB / 2.77MB  2.0s
+ => => sha256:128624e9c76ab0636e60e3fe2463e9a710346c68f47 451B / 451B  2.4s
+ => => extracting sha256:3f4ca61aafcd4fc07267a105067db35c0f0ac630e197  3.7s
+ => => extracting sha256:00fde01815c92cc90586fcf531723ab210577a0f1cb1  0.0s
+ => => extracting sha256:723367e6ef2d175cd363a4ca96a65ac6fa3f388506de  3.2s
+ => => extracting sha256:907e6809ddf0f1b24bb5a93c1f0f01034e905fa3a4c4  0.1s
+ => => extracting sha256:128624e9c76ab0636e60e3fe2463e9a710346c68f47b  0.0s
+ => [2/7] RUN npm install -g npm@9.1.3                                16.6s
+ => [3/7] ADD package.json .                                           0.0s
+ => [4/7] ADD serverapp.js .                                           0.1s
+ => [5/7] COPY . .                                                     0.3s
+ => [6/7] RUN mkdir -p uploads                                         0.2s
+ => [7/7] RUN npm install                                              1.4s
+ => exporting to image                                                 0.9s
+ => => exporting layers                                                0.9s
+ => => writing image sha256:7a69adc34ad8e482df889c879cc72e625b15c80cb  0.0s
+ => => naming to docker.io/library/uploadapp                           0.0s
+theia@theiadocker-michaellau41:/home/project/serverapp$ theia@theiadocker-mi
+theia@theiadocker-michaellau41:/home/project$ mkdir serverapp
+theia@theiadocker-michaellau41:/home/project$ cd serverapp
+theia@theiadocker-michaellau41:/home/project/serverapp$ npm init -y
+Wrote to /home/project/serverapp/package.json:
+
+{
+  "name": "serverapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+
+theia@theiadocker-michaellau41:/home/project/serverapp$ npm install express@4 multer
+
+added 78 packages, and audited 79 packages in 3s
+
+16 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+theia@theiadocker-michaellau41:/home/project/serverapp$ touch serverapp.js
+theia@theiadocker-michaellau41:/home/project/serverapp$ touch index.html
+theia@theiadocker-michaellau41:/home/project/serverapp$ mkdir uploads
+theia@theiadocker-michaellau41:/home/project/serverapp$ node serverapp.js
+Server is running on http://localhost:3000
+Error: Cannot find the URL /file/ in this application. Please check.
+    at /home/project/serverapp/serverapp.js:60:17
+    at Layer.handle [as handle_request] (/home/project/serverapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:149:13)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at Route.dispatch (/home/project/serverapp/node_modules/express/lib/router/route.js:119:3)
+Error: Cannot find the URL /file/ in this application. Please check.
+    at /home/project/serverapp/serverapp.js:60:17
+    at Layer.handle [as handle_request] (/home/project/serverapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:149:13)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at Route.dispatch (/home/project/serverapp/node_modules/express/lib/router/route.js:119:3)
+Error: Cannot find the URL /upload in this application. Please check.
+    at /home/project/serverapp/serverapp.js:60:17
+    at Layer.handle [as handle_request] (/home/project/serverapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:149:13)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at next (/home/project/serverapp/node_modules/express/lib/router/route.js:145:7)
+    at Route.dispatch (/home/project/serverapp/node_modules/express/lib/router/route.js:119:3)
+Uploaded file: {
+  fieldname: 'file',
+  originalname: 'Screenshot 2026-09-03 174502.png',
+  encoding: '7bit',
+  mimetype: 'image/png',
+  path: 'uploads/Screenshot 2026-09-03 174502.png',
+  destination: 'uploads/',
+  filename: 'Screenshot 2026-09-03 174502.png',
+  size: 2906898
+}
+^C
+theia@theiadocker-michaellau41:/home/project/serverapp$ touch Dockerfile
+theia@theiadocker-michaellau41:/home/project/serverapp$ docker build . -t uploadapp
+[+] Building 36.0s (12/12) FINISHED                          docker:default
+ => [internal] load build definition from Dockerfile                   0.1s
+ => => transferring dockerfile: 231B                                   0.0s
+ => [internal] load metadata for docker.io/library/node:18.12.1-bulls  1.0s
+ => [internal] load .dockerignore                                      0.0s
+ => => transferring context: 2B                                        0.0s
+ => [internal] load build context                                      0.4s
+ => => transferring context: 5.70MB                                    0.4s
+ => [1/7] FROM docker.io/library/node:18.12.1-bullseye-slim@sha256:0  15.4s
+ => => resolve docker.io/library/node:18.12.1-bullseye-slim@sha256:0c  0.0s
+ => => sha256:3f4ca61aafcd4fc07267a105067db35c0f0ac 31.40MB / 31.40MB  7.9s
+ => => sha256:00fde01815c92cc90586fcf531723ab210577a0 4.18kB / 4.18kB  0.4s
+ => => sha256:723367e6ef2d175cd363a4ca96a65ac6fa3f 45.15MB / 45.15MB  10.5s
+ => => sha256:0c3ea57b6c560f83120801e222691d9bd187c60 1.37kB / 1.37kB  0.0s
+ => => sha256:a26e85f2ac4163ff881438833dd8f4f6f7282b6 6.80kB / 6.80kB  0.0s
+ => => sha256:907e6809ddf0f1b24bb5a93c1f0f01034e905fa 2.77MB / 2.77MB  2.0s
+ => => sha256:128624e9c76ab0636e60e3fe2463e9a710346c68f47 451B / 451B  2.4s
+ => => extracting sha256:3f4ca61aafcd4fc07267a105067db35c0f0ac630e197  3.7s
+ => => extracting sha256:00fde01815c92cc90586fcf531723ab210577a0f1cb1  0.0s
+ => => extracting sha256:723367e6ef2d175cd363a4ca96a65ac6fa3f388506de  3.2s
+ => => extracting sha256:907e6809ddf0f1b24bb5a93c1f0f01034e905fa3a4c4  0.1s
+ => => extracting sha256:128624e9c76ab0636e60e3fe2463e9a710346c68f47b  0.0s
+ => [2/7] RUN npm install -g npm@9.1.3                                16.6s
+ => [3/7] ADD package.json .                                           0.0s
+ => [4/7] ADD serverapp.js .                                           0.1s
+ => [5/7] COPY . .                                                     0.3s
+ => [6/7] RUN mkdir -p uploads                                         0.2s
+ => [7/7] RUN npm install                                              1.4s
+ => exporting to image                                                 0.9s
+ => => exporting layers                                                0.9s
+ => => writing image sha256:7a69adc34ad8e482df889c879cc72e625b15c80cb  0.0s
+ => => naming to docker.io/library/uploadapp                           0.0s
+theia@theiadocker-michaellau41:/home/project/serverapp$ docker run -dp 3000:3000 uploadapp
+ca0eef5608b2ebc943d393307188f1de74c9bed355b8083b286f5e9ea511cf6c
+theia@theiadocker-michaellau41:/home/project/serverapp$ 
+
+
+============================================================
+
+start the code engine:
+in another new terminal 
+(note that although it will start a terminal look same as usual one, deployment wont work in that ones)
+
+common steps:
+set namespace
+docker build (docker image)
+docker push
+then the container and image's instance will be created as the same moment to run 
+
+============================================================
+
+ibmcloud ce project current
+theia@theiadocker-michaellau41:/home/project$ ibmcloud ce project current
+Getting the current project context...
+OK
+
+Name:       Code Engine - sn-labs-michaellau41  
+ID:         9923f8bf-a9c6-4a4b-86f1-799a55f921fd  
+Subdomain:  2eg686a3w9cz  
+Domain:     us-south.codeengine.appdomain.cloud  
+Region:     us-south  
+
+Kubernetes Config:    
+Context:               2eg686a3w9cz  
+Environment Variable:  export KUBECONFIG="/home/theia/.bluemix/plugins/code-engine/Code Engine - sn-labs-michaellau41-9923f8bf-a9c6-4a4b-86f1-799a55f921fd.yaml"  
+theia@theiadocker-michaellau41:/home/project$ cd serverapp
+theia@theiadocker-michaellau41:/home/project/serverapp$ MY_NAMESPACE=$(ibmcloud cr namespaces | grep sn-labs-)
+echo $MY_NAMESPACE
+sn-labs-michaellau41
+theia@theiadocker-michaellau41:/home/project/serverapp$ ibmcloud ce project current
+theia@theiadocker-michaellau41:/home/project$ ibmcloud ce project current
+Getting the current project context...
+OK
+
+Name:       Code Engine - sn-labs-michaellau41  
+ID:         9923f8bf-a9c6-4a4b-86f1-799a55f921fd  
+Subdomain:  2eg686a3w9cz  
+Domain:     us-south.codeengine.appdomain.cloud  
+Region:     us-south  
+
+Kubernetes Config:    
+Context:               2eg686a3w9cz  
+Environment Variable:  export KUBECONFIG="/home/theia/.bluemix/plugins/code-engine/Code Engine - sn-labs-michaellau41-9923f8bf-a9c6-4a4b-86f1-799a55f921fd.yaml"  
+theia@theiadocker-michaellau41:/home/project$ cd serverapp
+theia@theiadocker-michaellau41:/home/project/serverapp$ MY_NAMESPACE=$(ibmcloud cr namespaces | grep sn-labs-)
+echo $MY_NAMESPACE
+sn-labs-michaellau41
+theia@theiadocker-michaellau41:/home/project/serverapp$ docker build . -t us.icr.io/$MY_NAMESPACE/uploadapp
+[+] Building 1.1s (12/12) FINISHED                           docker:default
+ => [internal] load build definition from Dockerfile                   0.0s
+ => => transferring dockerfile: 231B                                   0.0s
+ => [internal] load metadata for docker.io/library/node:18.12.1-bulls  0.9s
+ => [internal] load .dockerignore                                      0.0s
+ => => transferring context: 2B                                        0.0s
+ => [1/7] FROM docker.io/library/node:18.12.1-bullseye-slim@sha256:0c  0.0s
+ => [internal] load build context                                      0.1s
+ => => transferring context: 48.89kB                                   0.1s
+ => CACHED [2/7] RUN npm install -g npm@9.1.3                          0.0s
+ => CACHED [3/7] ADD package.json .                                    0.0s
+ => CACHED [4/7] ADD serverapp.js .                                    0.0s
+ => CACHED [5/7] COPY . .                                              0.0s
+ => CACHED [6/7] RUN mkdir -p uploads                                  0.0s
+ => CACHED [7/7] RUN npm install                                       0.0s
+ => exporting to image                                                 0.0s
+ => => exporting layers                                                0.0s
+ => => writing image sha256:7a69adc34ad8e482df889c879cc72e625b15c80cb  0.0s
+ => => naming to us.icr.io/sn-labs-michaellau41/uploadapp              0.0s
+theia@theiadocker-michaellau41:/home/project/serverapp$ docker push us.icr.io/$MY_NAMESPACE/uploadapp
+Using default tag: latest
+The push refers to repository [us.icr.io/sn-labs-michaellau41/uploadapp]
+56579349f27b: Pushed 
+55f1dd0a02e2: Pushed 
+1646a8f1c641: Pushed 
+93d6217b6677: Pushed 
+a4714ac9383a: Pushed 
+bf50af02c695: Pushed 
+227ffa29a511: Pushed 
+8cfb994e0193: Pushed 
+eb85bca85619: Pushed 
+f41277d3eaf4: Pushed 
+8a70d251b653: Pushed 
+latest: digest: sha256:2b3e4a518a58c095a9712f9bf2b7aea89c841ee991cc769c70654a803b8ae064 size: 2620
+theia@theiadocker-michaellau41:/home/project/serverapp$ ibmcloud ce application create --name uploadapp --image us.icr.io/${SN_ICR_NAMESPACE}/uploadapp --registry-secret icr-secret --port 3000
+Creating application 'uploadapp'...
+The Route is still working to reflect the latest desired specification.
+Configuration 'uploadapp' is waiting for a Revision to become ready.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n uploadapp' to check the application status.
+OK
+
+https://uploadapp.2eg686a3w9cz.us-south.codeengine.appdomain.cloud
+theia@theiadocker-michaellau41:/home/project/serverapp$ 
+
+
+
+/// 
+
+test the result 
+https://uploadapp.2eg686a3w9cz.us-south.codeengine.appdomain.cloud/file/file_upload_name
+
+
