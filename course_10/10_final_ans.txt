@@ -1,0 +1,77 @@
+Q1
+{"message":"The user coopercoote has been added"}
+Q2
+{"message":"User already exists"}
+Q3
+{"message":"coopercoote has logged in"}
+Q4
+{"message":"Invalid credentials"}
+Q5
+app.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  try {
+    // Check if the user already exists
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+
+    if (existingUser) return res.status(400).json({ message: 'User already exists' });
+
+    // Create and save the new user
+    const newUser = new User({ username, email, password });
+    await newUser.save();
+
+    // Generate JWT token and store in session
+    const token = jwt.sign({ userId: newUser._id, username: newUser.username }, SECRET_KEY, { expiresIn: '1h' });
+    req.session.token = token;
+
+    // Respond with success message
+    res.redirect(`/index?username=${newUser.username}`);
+
+
+
+  } catch (error) {
+    console.error(error);
+    // Handle server errors
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+Q6
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if the user exists with the provided credentials
+    const user = await User.findOne({ username, password });
+
+    if (!user) return res.status(401).json({ message: 'Invalid credentials' });
+
+    // Generate JWT token and store in session
+    const token = jwt.sign({ userId: user._id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+    req.session.token = token;
+
+    // Respond with a success message
+    res.redirect(`/index?username=${user.username}`);
+
+
+  } catch (error) {
+    console.error(error);
+    // Handle server errors
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+Q7
+const decoded = jwt.verify(token, SECRET_KEY);
+
+Q8
+const token = jwt.sign({ userId: newUser._id, username: newUser.username }, SECRET_KEY, { expiresIn: '1h' });
+
+Q9
+if (!text || typeof text !== 'string') {
+
+Q10
+req.session.destroy((err) => {
+
+
